@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import authOperations from "../../redux/auth/auth-operations";
 import PropTypes from "prop-types";
+import { Button } from "@material-ui/core";
 import styles from "./RegisterView.module.css";
 
 class RegisterView extends Component {
@@ -74,10 +75,12 @@ class RegisterView extends Component {
               onChange={this.handleChange}
             />
           </label>
-
-          <button className={styles.button} type="submit">
+          <Button variant="contained" type="submit" color="primary">
             Registration
-          </button>
+          </Button>
+          {/* <button className={styles.button} type="submit">
+            Registration
+          </button> */}
         </form>
       </div>
     );

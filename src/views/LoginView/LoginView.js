@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import authOperations from "../../redux/auth/auth-operations";
-import styles from "../RegisterView/RegisterView.module.css";
+import { Button } from "@material-ui/core";
 import PropTypes from "prop-types";
+
+import styles from "../RegisterView/RegisterView.module.css";
 
 class LoginView extends Component {
   static propTypes = {
@@ -61,9 +63,9 @@ class LoginView extends Component {
             />
           </label>
 
-          <button className={styles.button} type="submit">
+          <Button variant="contained" type="submit" color="primary">
             Login
-          </button>
+          </Button>
         </form>
       </div>
     );

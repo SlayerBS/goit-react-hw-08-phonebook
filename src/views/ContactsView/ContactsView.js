@@ -4,7 +4,6 @@ import { fetchContacts } from "../../redux/contacts/operations";
 import { changeFilter } from "../../redux/contacts/actions";
 import contactsSelectors from "../../redux/contacts/selectors";
 import Container from "../../components/Container";
-import Section from "../../components/Section";
 import ContactsList from "../../components/ContactList";
 import Filter from "../../components/Filter";
 import ContactForm from "../../components/ContactForm";
