@@ -1,44 +1,58 @@
-import authActions from "./auth-actions";
+import {
+  registerRequest,
+  registerSuccess,
+  registerError,
+  logoutRequest,
+  logoutSuccess,
+  logoutError,
+  loginRequest,
+  loginSuccess,
+  loginError,
+  getCurrentUserRequest,
+  getCurrentUserSuccess,
+  getCurrentUserError,
+} from "./auth-actions";
+
 import api from "../../services/api";
 
 export const register = (credentials) => async (dispatch) => {
-  dispatch(authActions.registerRequest());
+  dispatch(registerRequest());
 
   try {
     const { data } = await api.signUp(credentials);
 
     api.token.set(data.token);
-    dispatch(authActions.registerSuccess(data));
+    dispatch(registerSuccess(data));
   } catch (error) {
     console.log("error.message", error._message);
-    dispatch(authActions.registerError(error));
+    dispatch(registerError(error));
     console.log("error.message", error._message);
   }
 };
 
 export const logIn = (credentials) => async (dispatch) => {
-  dispatch(authActions.loginRequest());
+  dispatch(loginRequest());
 
   try {
     const { data } = await api.logIn(credentials);
 
     api.token.set(data.token);
-    dispatch(authActions.loginSuccess(data));
+    dispatch(loginSuccess(data));
   } catch (error) {
-    dispatch(authActions.loginError(error.message));
+    dispatch(loginError(error.message));
   }
 };
 
 export const logOut = () => async (dispatch) => {
-  dispatch(authActions.logoutRequest());
+  dispatch(logoutRequest());
 
   try {
     await api.logOut();
 
     api.token.unset();
-    dispatch(authActions.logoutSuccess());
+    dispatch(logoutSuccess());
   } catch (error) {
-    dispatch(authActions.logoutError(error.message));
+    dispatch(logoutError(error.message));
   }
 };
 
@@ -52,15 +66,13 @@ export const getCurrentUser = () => async (dispatch, getState) => {
   }
 
   api.token.set(persistedToken);
-  dispatch(authActions.getCurrentUserRequest());
+  dispatch(getCurrentUserRequest());
 
   try {
     const { data } = await api.getCurrentUser();
 
-    dispatch(authActions.getCurrentUserSuccess(data));
+    dispatch(getCurrentUserSuccess(data));
   } catch (error) {
-    dispatch(authActions.getCurrentUserError(error.message));
+    dispatch(getCurrentUserError(error.message));
   }
 };
-
-// export default { register, logIn, logOut, getCurrentUser };

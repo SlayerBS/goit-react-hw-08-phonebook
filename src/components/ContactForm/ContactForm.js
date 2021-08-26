@@ -16,7 +16,6 @@ class ContactForm extends Component {
   handleChange = (evt) => {
     const { name, value } = evt.currentTarget;
     this.setState({ [name]: value });
-    console.log({ [name]: value });
   };
 
   handleSubmit = (evt) => {
@@ -33,15 +32,6 @@ class ContactForm extends Component {
     } else toast.error(`${name} or ${number}is already on contacts`);
     this.reset();
   };
-
-  // if (this.state.name && this.state.number !== "") {
-  // const { name, number } = this.state;
-  // this.props.onSubmit(name, number);
-  // this.reset();
-  // return;
-  // }
-  // alert("Please, input name and number");
-  // };
 
   reset = () => {
     this.setState({

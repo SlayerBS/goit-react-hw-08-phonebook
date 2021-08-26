@@ -7,7 +7,6 @@ import Container from "../../components/Container";
 import ContactsList from "../../components/ContactList";
 import Filter from "../../components/Filter";
 import ContactForm from "../../components/ContactForm";
-import Error from "../../components/Error";
 import LoaderSpiner from "../../components/Loader/Loader";
 import PropTypes from "prop-types";
 
@@ -22,11 +21,9 @@ class ContactsView extends Component {
   }
 
   render() {
-    const { contacts, error, clearFilter, isLoading } = this.props;
+    const { isLoading } = this.props;
     return (
       <Container>
-        {error && <Error message={error.message} />}
-
         <ContactForm />
 
         <Filter />
@@ -40,7 +37,7 @@ class ContactsView extends Component {
 const mapStateToProps = (state) => ({
   contacts: contactsSelectors.getAllContacts(state),
   isLoading: contactsSelectors.getLoading(state),
-  error: contactsSelectors.getError(state),
+  // error: contactsSelectors.getError(state),
 });
 const mapDispatchToProps = (dispatch) => ({
   fetchContacts: () => dispatch(fetchContacts()),
