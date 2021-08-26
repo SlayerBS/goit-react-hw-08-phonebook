@@ -1,6 +1,6 @@
 import { Component } from "react";
 import { connect } from "react-redux";
-import getError from "../../redux/contacts/selectors";
+import contactsSelectors from "../../redux/contacts/selectors";
 import { clearError } from "../../redux/contacts/actions";
 import PropTypes from "prop-types";
 
@@ -11,7 +11,7 @@ class Error extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  error: getError(state),
+  message: contactsSelectors.getError(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({

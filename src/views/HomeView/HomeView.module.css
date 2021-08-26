@@ -1,0 +1,8 @@
+.container {
+  height: 100vh;
+  text-align: center;
+  background-image: url(../../assets/img/background.jpg);
+}
+.title {
+  color: #3f51b5;
+}

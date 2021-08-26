@@ -20,7 +20,7 @@ export const fetchContacts = () => async (dispatch) => {
     const { data } = await api.fetchContacts();
     dispatch(fetchContactsSuccess(data));
   } catch (error) {
-    dispatch(fetchContactsError(error));
+   dispatch(fetchContactsError(error.message));
   }
 };
 

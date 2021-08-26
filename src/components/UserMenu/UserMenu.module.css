@@ -1,0 +1,17 @@
+.wrapper {
+  
+}
+.avatar {
+}
+
+.name {
+  
+}
+
+.button {
+}
+
+.button:hover,
+.button:focus {
+  background-color: #3312aa;
+}

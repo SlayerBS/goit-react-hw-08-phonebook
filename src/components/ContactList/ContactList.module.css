@@ -1,7 +1,11 @@
 .item {
-  margin-bottom: 20px;
-  font-size: large;
+  display: grid;
+  grid-template-columns: 3fr 3fr 1fr;
+  gap: 5px;
+  align-items: center;
+  margin-bottom: 8px;
 }
+
 .btn {
   padding: 5px 10px;
   margin-left: 20px;
