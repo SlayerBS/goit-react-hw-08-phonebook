@@ -8,6 +8,9 @@ import {
   deleteContactRequest,
   deleteContactSuccess,
   deleteContactError,
+  editContactRequest,
+  editContactSuccess,
+  editContactError,
   changeFilter,
   clearError,
 } from "./actions";
@@ -20,7 +23,7 @@ export const fetchContacts = () => async (dispatch) => {
     const { data } = await api.fetchContacts();
     dispatch(fetchContactsSuccess(data));
   } catch (error) {
-   dispatch(fetchContactsError(error.message));
+    dispatch(fetchContactsError(error.message));
   }
 };
 
@@ -45,5 +48,15 @@ export const deleteContact = (id) => async (dispatch) => {
     dispatch(deleteContactSuccess(id));
   } catch (error) {
     dispatch(deleteContactError(error));
+  }
+};
+
+export const editContact = (id) => async (dispatch) => {
+  dispatch(editContactRequest());
+  try {
+    await api.editContact(id);
+    dispatch(editContactSuccess(id));
+  } catch (error) {
+    dispatch(editContactError(error));
   }
 };

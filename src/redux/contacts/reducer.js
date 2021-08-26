@@ -10,6 +10,9 @@ import {
   deleteContactRequest,
   deleteContactSuccess,
   deleteContactError,
+  editContactRequest,
+  editContactSuccess,
+  editContactError,
   changeFilter,
   clearError,
 } from "./actions";
@@ -26,6 +29,7 @@ const items = createReducer(initialState.contacts, {
   [addContactSuccess]: (state, { payload }) => [...state, payload],
   [deleteContactSuccess]: (state, { payload }) =>
     state.filter(({ id }) => id !== payload),
+  [editContactSuccess]: (state, { payload }) => [...state, payload],
 });
 
 const filter = createReducer("", {
@@ -46,12 +50,17 @@ const loading = createReducer(initialState.loading, {
   [deleteContactRequest]: () => true,
   [deleteContactSuccess]: () => false,
   [deleteContactError]: () => false,
+
+  [editContactRequest]: () => true,
+  [editContactSuccess]: () => false,
+  [editContactError]: () => false,
 });
 
 const error = createReducer(initialState.error, {
   [fetchContactsError]: onError,
   [addContactError]: onError,
   [deleteContactError]: onError,
+  [editContactError]: onError,
   [clearError]: () => null,
 });
 

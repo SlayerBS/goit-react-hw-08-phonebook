@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import authOperations from "../../redux/auth/auth-operations";
+import { register } from "../../redux/auth/auth-operations";
 import PropTypes from "prop-types";
 import { Button } from "@material-ui/core";
 import styles from "./RegisterView.module.css";
@@ -88,7 +88,7 @@ class RegisterView extends Component {
 }
 
 const mapDispatchToProps = {
-  onRegister: authOperations.register,
+  onRegister: register,
 };
 
 export default connect(null, mapDispatchToProps)(RegisterView);
