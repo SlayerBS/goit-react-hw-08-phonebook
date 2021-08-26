@@ -1,8 +1,9 @@
 import React, { Component, Suspense, lazy } from "react";
+import { Toaster } from "react-hot-toast";
 import { Switch } from "react-router-dom";
 import AppBar from "./components/AppBar/AppBar";
 import Loader from "./components/Loader/Loader";
-import authOperations from "./redux/auth/auth-operations";
+import { getCurrentUser } from "./redux/auth/auth-operations";
 import PrivateRoute from "./components/PrivateRoute";
 import PublicRoute from "./components/PublicRoute";
 import { connect } from "react-redux";
@@ -60,6 +61,7 @@ class App extends Component {
               component={Contacts}
             />
           </Switch>
+          <Toaster position="top-right" />
         </Suspense>
       </>
     );
@@ -67,7 +69,7 @@ class App extends Component {
 }
 
 const mapDispatchToProps = {
-  onGetCurretnUser: authOperations.getCurrentUser,
+  onGetCurretnUser: getCurrentUser,
 };
 
 export default connect(null, mapDispatchToProps)(App);

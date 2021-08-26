@@ -1,7 +1,7 @@
 import authActions from "./auth-actions";
 import api from "../../services/api";
 
-const register = (credentials) => async (dispatch) => {
+export const register = (credentials) => async (dispatch) => {
   dispatch(authActions.registerRequest());
 
   try {
@@ -16,7 +16,7 @@ const register = (credentials) => async (dispatch) => {
   }
 };
 
-const logIn = (credentials) => async (dispatch) => {
+export const logIn = (credentials) => async (dispatch) => {
   dispatch(authActions.loginRequest());
 
   try {
@@ -29,7 +29,7 @@ const logIn = (credentials) => async (dispatch) => {
   }
 };
 
-const logOut = () => async (dispatch) => {
+export const logOut = () => async (dispatch) => {
   dispatch(authActions.logoutRequest());
 
   try {
@@ -42,7 +42,7 @@ const logOut = () => async (dispatch) => {
   }
 };
 
-const getCurrentUser = () => async (dispatch, getState) => {
+export const getCurrentUser = () => async (dispatch, getState) => {
   const {
     auth: { token: persistedToken },
   } = getState();
@@ -63,4 +63,4 @@ const getCurrentUser = () => async (dispatch, getState) => {
   }
 };
 
-export default { register, logIn, logOut, getCurrentUser };
+// export default { register, logIn, logOut, getCurrentUser };

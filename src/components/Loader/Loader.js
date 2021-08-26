@@ -3,9 +3,9 @@
 // import styles from "./Loader.module.css";
 
 // import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
-import { BulletList } from "react-content-loader";
+import { Code } from "react-content-loader";
 
-const LoaderSpiner = () => <BulletList />;
+const LoaderSpiner = () => <Code />;
 // {
 //   return (
 //     <div className={styles.Loader}>

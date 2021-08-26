@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import authOperations from "../../redux/auth/auth-operations";
+import { logIn } from "../../redux/auth/auth-operations";
 import { Button } from "@material-ui/core";
 import PropTypes from "prop-types";
 
@@ -72,7 +72,7 @@ class LoginView extends Component {
   }
 }
 const mapDispatchToProps = {
-  onLogin: authOperations.logIn,
+  onLogin: logIn,
 };
 
 export default connect(null, mapDispatchToProps)(LoginView);

@@ -1,3 +1,4 @@
+import toast from "react-hot-toast";
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { addContact } from "../../redux/contacts/operations";
@@ -20,14 +21,26 @@ class ContactForm extends Component {
 
   handleSubmit = (evt) => {
     evt.preventDefault();
-    if (this.state.name && this.state.number !== "") {
-      const { name, number } = this.state;
+
+    const { name, number } = this.state;
+    console.log(this.props.contacts);
+
+    const isUser = this.props.contacts.find((user) => user.name === name);
+    if (!isUser) {
       this.props.onSubmit(name, number);
-      this.reset();
-      return;
-    }
-    alert("Please, input name and number");
+      toast.success(`${name} added to your contacts`);
+    } else toast.error(`${name} is already on contacts`);
+    this.reset();
   };
+
+  // if (this.state.name && this.state.number !== "") {
+  // const { name, number } = this.state;
+  // this.props.onSubmit(name, number);
+  // this.reset();
+  // return;
+  // }
+  // alert("Please, input name and number");
+  // };
 
   reset = () => {
     this.setState({

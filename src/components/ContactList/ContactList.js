@@ -1,11 +1,10 @@
 import PropTypes from "prop-types";
 import { Button } from "@material-ui/core";
 import styles from "./ContactList.module.css";
-import DeleteButtons from "../../UI/DeleteButton/DeleteButton";
-import Typography from "@material-ui/core/Typography";
 import DeleteIcon from "@material-ui/icons/Delete";
+import EditIcon from "@material-ui/icons/Edit";
 
-const ContactList = ({ contacts, onDelete }) => (
+const ContactList = ({ contacts, onDelete, onEdit }) => (
   <ul>
     {contacts.map((contact) => (
       <li key={contact.id} className={styles.item}>
@@ -20,6 +19,16 @@ const ContactList = ({ contacts, onDelete }) => (
         >
           <DeleteIcon />
           Delete
+        </Button>
+        <Button
+          size="small"
+          variant="contained"
+          color="secondary"
+          onClick={() => onEdit(contact.id)}
+          // className={styles.btn}
+        >
+          <EditIcon />
+          Edit
         </Button>
       </li>
     ))}
