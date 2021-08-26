@@ -1,11 +1,15 @@
 .wrapper {
-  
+  display: flex;
+  align-items: center;
+  /* justify-content: space-around; */
+
+  padding-top: 10px;
 }
 .avatar {
 }
 
 .name {
-  
+  margin-right: 10px;
 }
 
 .button {

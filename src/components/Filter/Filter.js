@@ -6,7 +6,7 @@ import styles from "./Filter.module.css";
 
 const Filter = ({ filter, onChange }) => {
   return (
-    <>
+    <div className={styles.container}>
       <h3>Find contacts by name</h3>
       <input
         type="text"
@@ -17,7 +17,7 @@ const Filter = ({ filter, onChange }) => {
         required
         className={styles.input}
       />
-    </>
+    </div>
   );
 };
 const mapStateToProps = (state) => ({
