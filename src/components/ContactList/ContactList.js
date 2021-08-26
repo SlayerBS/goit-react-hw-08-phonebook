@@ -20,7 +20,7 @@ const ContactList = ({ contacts, onDelete, onEdit }) => (
           <DeleteIcon />
           Delete
         </Button>
-        <Button
+        {/* <Button
           size="small"
           variant="contained"
           color="secondary"
@@ -29,7 +29,7 @@ const ContactList = ({ contacts, onDelete, onEdit }) => (
         >
           <EditIcon />
           Edit
-        </Button>
+        </Button> */}
       </li>
     ))}
   </ul>

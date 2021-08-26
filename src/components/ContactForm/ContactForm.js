@@ -26,10 +26,11 @@ class ContactForm extends Component {
     console.log(this.props.contacts);
 
     const isUser = this.props.contacts.find((user) => user.name === name);
-    if (!isUser) {
+    const isNumber = this.props.contacts.find((user) => user.number === number);
+    if (!isUser && !isNumber) {
       this.props.onSubmit(name, number);
       toast.success(`${name} added to your contacts`);
-    } else toast.error(`${name} is already on contacts`);
+    } else toast.error(`${name} or ${number}is already on contacts`);
     this.reset();
   };
 
