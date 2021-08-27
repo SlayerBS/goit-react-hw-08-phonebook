@@ -15,7 +15,7 @@ import {
   editContactError,
   changeFilter,
   clearError,
-} from "./actions";
+} from "./contacts-actions";
 
 const initialState = {
   contacts: [],

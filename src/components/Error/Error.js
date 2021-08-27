@@ -1,21 +1,20 @@
 import { Component } from "react";
 import { connect } from "react-redux";
-import contactsSelectors from "../../redux/contacts/selectors";
-import { clearError } from "../../redux/contacts/actions";
+import { getError } from "../../redux/auth/auth-selectors";
 import PropTypes from "prop-types";
+import PriorityHighIcon from '@material-ui/icons/PriorityHigh';
+import styles from "./Error.module.css"
+
 
 class Error extends Component {
+  
   render() {
-    return <p>{this.props.message}</p>;
+    const message = this.props.message;
+    console.log(message);
+    return <div>
+      <p className={styles.error}><PriorityHighIcon/>{message}</p>
+      </div>
   }
 }
 
-const mapStateToProps = (state) => ({
-  message: contactsSelectors.getError(state),
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  clearError: () => dispatch(clearError()),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Error);
+export default Error;

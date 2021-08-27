@@ -1,12 +1,15 @@
-import toast, { Toaster } from "react-hot-toast";
 import { connect } from "react-redux";
-import { deleteContact } from "../../redux/contacts/operations";
-import { editContact } from "../../redux/contacts/operations";
+import { deleteContact } from "../../redux/contacts/contacts-operations";
+import { editContact } from "../../redux/contacts/contacts-operations";
 import ContactList from "./ContactList";
-import contactsSelectors from "../../redux/contacts/selectors";
+import {
+  getVisibleContacts,
+  getError,
+} from "../../redux/contacts/contacts-selectors";
 
 const mapStateToProps = (state) => ({
-  contacts: contactsSelectors.getVisibleContacts(state),
+  contacts: getVisibleContacts(state),
+  error: getError(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({

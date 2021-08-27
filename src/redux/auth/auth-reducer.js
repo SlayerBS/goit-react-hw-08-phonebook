@@ -1,41 +1,51 @@
-import { combineReducers } from 'redux';
-import { createReducer } from '@reduxjs/toolkit';
-import authActions from './auth-actions';
+import { combineReducers } from "redux";
+import { createReducer } from "@reduxjs/toolkit";
+import {
+  registerSuccess,
+  registerError,
+  logoutSuccess,
+  logoutError,
+  loginSuccess,
+  loginError,
+  getCurrentUserSuccess,
+  getCurrentUserError,
+  clearError,
+} from "./auth-actions";
 
 const initialUserState = { name: null, email: null };
 
 const user = createReducer(initialUserState, {
-  [authActions.registerSuccess]: (_, { payload }) => payload.user,
-  [authActions.loginSuccess]: (_, { payload }) => payload.user,
-  [authActions.logoutSuccess]: () => null,
-  [authActions.getCurrentUserSuccess]: (_, { payload }) => payload,
+  [registerSuccess]: (_, { payload }) => payload.user,
+  [loginSuccess]: (_, { payload }) => payload.user,
+  [logoutSuccess]: () => null,
+  [getCurrentUserSuccess]: (_, { payload }) => payload,
 });
 
 const token = createReducer(null, {
-  [authActions.registerSuccess]: (_, { payload }) => payload.token,
-  [authActions.loginSuccess]: (_, { payload }) => payload.token,
-  [authActions.logoutSuccess]: () => null,
+  [registerSuccess]: (_, { payload }) => payload.token,
+  [loginSuccess]: (_, { payload }) => payload.token,
+  [logoutSuccess]: () => null,
 });
 
 const onError = (_, { payload }) => payload;
 
 const isAuthenticated = createReducer(false, {
-  [authActions.registerSuccess]: () => true,
-  [authActions.loginSuccess]: () => true,
-  [authActions.getCurrentUserSuccess]: () => true,
+  [registerSuccess]: () => true,
+  [loginSuccess]: () => true,
+  [getCurrentUserSuccess]: () => true,
 
-  [authActions.registerError]: () => false,
-  [authActions.loginError]: () => false,
-  [authActions.getCurrentUserError]: () => false,
-  [authActions.logoutSuccess]: () => false,
+  [registerError]: () => false,
+  [loginError]: () => false,
+  [getCurrentUserError]: () => false,
+  [logoutSuccess]: () => false,
 });
 
 const error = createReducer(null, {
-  [authActions.registerError]: onError,
-  [authActions.loginError]: onError,
-  [authActions.logoutError]: onError,
-  [authActions.getCurrentUserError]: onError,
-  [authActions.clearError]: () => null,
+  [registerError]: onError,
+  [loginError]: onError,
+  [logoutError]: onError,
+  [getCurrentUserError]: onError,
+  [clearError]: () => null,
 });
 
 export default combineReducers({

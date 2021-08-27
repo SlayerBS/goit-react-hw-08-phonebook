@@ -11,9 +11,7 @@ import {
   editContactRequest,
   editContactSuccess,
   editContactError,
-  changeFilter,
-  clearError,
-} from "./actions";
+} from "./contacts-actions";
 
 import api from "../../services/api";
 

@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchContacts } from "../../redux/contacts/operations";
-import { changeFilter } from "../../redux/contacts/actions";
-import contactsSelectors from "../../redux/contacts/selectors";
+import { fetchContacts } from "../../redux/contacts/contacts-operations";
+import { changeFilter } from "../../redux/contacts/contacts-actions";
+import {
+  getAllContacts,
+  getLoading,
+} from "../../redux/contacts/contacts-selectors";
 import Container from "../../components/Container";
 import ContactsList from "../../components/ContactList";
 import Filter from "../../components/Filter";
 import ContactForm from "../../components/ContactForm";
-import Error from "../../components/Error";
 import LoaderSpiner from "../../components/Loader/Loader";
 import PropTypes from "prop-types";
 
@@ -22,11 +24,9 @@ class ContactsView extends Component {
   }
 
   render() {
-    const { contacts, error, clearFilter, isLoading } = this.props;
+    const { isLoading } = this.props;
     return (
       <Container>
-        {error && <Error message={error.message} />}
-
         <ContactForm />
 
         <Filter />
@@ -38,9 +38,9 @@ class ContactsView extends Component {
   }
 }
 const mapStateToProps = (state) => ({
-  contacts: contactsSelectors.getAllContacts(state),
-  isLoading: contactsSelectors.getLoading(state),
-  error: contactsSelectors.getError(state),
+  contacts: getAllContacts(state),
+  isLoading: getLoading(state),
+  // error: contactsSelectors.getError(state),
 });
 const mapDispatchToProps = (dispatch) => ({
   fetchContacts: () => dispatch(fetchContacts()),

@@ -1,8 +1,8 @@
 import toast from "react-hot-toast";
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { addContact } from "../../redux/contacts/operations";
-import contactsSelectors from "../../redux/contacts/selectors";
+import { addContact } from "../../redux/contacts/contacts-operations";
+import { getAllContacts } from "../../redux/contacts/contacts-selectors";
 import { Button } from "@material-ui/core";
 import styles from "./ContactForm.module.css";
 class ContactForm extends Component {
@@ -16,7 +16,6 @@ class ContactForm extends Component {
   handleChange = (evt) => {
     const { name, value } = evt.currentTarget;
     this.setState({ [name]: value });
-    console.log({ [name]: value });
   };
 
   handleSubmit = (evt) => {
@@ -30,18 +29,9 @@ class ContactForm extends Component {
     if (!isUser && !isNumber) {
       this.props.onSubmit(name, number);
       toast.success(`${name} added to your contacts`);
-    } else toast.error(`${name} or ${number}is already on contacts`);
+    } else toast.error(`${name} or ${number} is already on contacts`);
     this.reset();
   };
-
-  // if (this.state.name && this.state.number !== "") {
-  // const { name, number } = this.state;
-  // this.props.onSubmit(name, number);
-  // this.reset();
-  // return;
-  // }
-  // alert("Please, input name and number");
-  // };
 
   reset = () => {
     this.setState({
@@ -89,7 +79,7 @@ class ContactForm extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  contacts: contactsSelectors.getAllContacts(state),
+  contacts: getAllContacts(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
