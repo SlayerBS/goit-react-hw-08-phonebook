@@ -44,9 +44,9 @@ class App extends Component {
 
     return (
       <>
-        {error && <Error message={error} />}
+       
         <AppBar />
-
+        {error && <Error message={error} />}
         <Suspense fallback={<Loader />}>
           <Switch>
             <PublicRoute exact path={path.home} component={HomePage} />
