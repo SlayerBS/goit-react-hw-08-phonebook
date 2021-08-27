@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchContacts } from "../../redux/contacts/operations";
-import { changeFilter } from "../../redux/contacts/actions";
-import contactsSelectors from "../../redux/contacts/selectors";
+import { fetchContacts } from "../../redux/contacts/contacts-operations";
+import { changeFilter } from "../../redux/contacts/contacts-actions";
+import {
+  getAllContacts,
+  getLoading,
+} from "../../redux/contacts/contacts-selectors";
 import Container from "../../components/Container";
 import ContactsList from "../../components/ContactList";
 import Filter from "../../components/Filter";
@@ -35,8 +38,8 @@ class ContactsView extends Component {
   }
 }
 const mapStateToProps = (state) => ({
-  contacts: contactsSelectors.getAllContacts(state),
-  isLoading: contactsSelectors.getLoading(state),
+  contacts: getAllContacts(state),
+  isLoading: getLoading(state),
   // error: contactsSelectors.getError(state),
 });
 const mapDispatchToProps = (dispatch) => ({

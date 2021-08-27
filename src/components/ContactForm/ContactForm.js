@@ -1,8 +1,8 @@
 import toast from "react-hot-toast";
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { addContact } from "../../redux/contacts/operations";
-import contactsSelectors from "../../redux/contacts/selectors";
+import { addContact } from "../../redux/contacts/contacts-operations";
+import { getAllContacts } from "../../redux/contacts/contacts-selectors";
 import { Button } from "@material-ui/core";
 import styles from "./ContactForm.module.css";
 class ContactForm extends Component {
@@ -29,7 +29,7 @@ class ContactForm extends Component {
     if (!isUser && !isNumber) {
       this.props.onSubmit(name, number);
       toast.success(`${name} added to your contacts`);
-    } else toast.error(`${name} or ${number}is already on contacts`);
+    } else toast.error(`${name} or ${number} is already on contacts`);
     this.reset();
   };
 
@@ -79,7 +79,7 @@ class ContactForm extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  contacts: contactsSelectors.getAllContacts(state),
+  contacts: getAllContacts(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
