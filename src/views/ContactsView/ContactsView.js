@@ -28,10 +28,8 @@ class ContactsView extends Component {
     return (
       <Container>
         <ContactForm />
-
         <Filter />
         <ContactsList />
-
         {isLoading && <LoaderSpiner />}
       </Container>
     );
